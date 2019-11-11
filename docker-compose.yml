@@ -1,6 +1,7 @@
 version: '3'
 
 services:
+    # Newsgroups
     sabnzbd:
         image: "linuxserver/sabnzbd"
         container_name: "sabnzbd"
@@ -15,97 +16,6 @@ services:
             - "TZ=America/Toronto"
         restart: always
 
-    sickbeard:
-        image: "linuxserver/sickbeard"
-        container_name: "sickbeard"
-        volumes:
-            - "./sickbeard:/config"
-            - "./downloads:/downloads"
-            - "./downloads/tv:/tv"
-        environment:
-            - "TZ=America/Toronto"
-        ports:
-            - "8081:8081"
-        restart: always
-
-    couchpotato:
-        image: "linuxserver/couchpotato"
-        container_name: "couchpotato"
-        volumes:
-            - "./couchpotato:/config"
-            - "./downloads:/downloads"
-            - "./downloads/movies:/movies"
-        environment:
-            - "TZ=America/Toronto"
-        ports:
-            - "5050:5050"
-        restart: always
-
-    deluge:
-        image: "linuxserver/deluge"
-        container_name: "deluge"
-        volumes:
-            - "./deluge:/config"
-            - "./downloads:/downloads"
-        environment:
-            - "TZ=America/Toronto"
-        ports:
-            - "8112:8112"
-        restart: always
-
-    # sonarr:
-    #     image: "linuxserver/sonarr"
-    #     container_name: "sonarr"
-    #     volumes:
-    #         - "./sonarr:/config"
-    #         - "./downloads:/downloads"
-    #         - "./downloads/tv:/tv"
-    #     environment:
-    #         - "TZ=America/Toronto"
-    #     ports:
-    #         - "8989:8989"
-    #     restart: always
-
-    # radarr:
-    #     image: "linuxserver/radarr"
-    #     container_name: "radarr"
-    #     volumes:
-    #         - "./radarr:/config"
-    #         - "./downloads:/downloads"
-    #         - "./downloads/movies:/movies"
-    #     environment:
-    #         - "TZ=America/Toronto"
-    #     ports:
-    #         - "7878:7878"
-    #     restart: always
-
-    # transmission:
-    #     image: "linuxserver/transmission"
-    #     container_name: "transmission"
-    #     volumes:
-    #         - "./transmission:/config"
-    #         - "./watch:/watch"
-    #         - "./downloads:/downloads"
-    #     environment:
-    #         - "TZ=America/Toronto"
-    #     ports:
-    #         - "9091:9091"
-    #         - "51413:51413"
-    #         - "51413:51413/udp"
-    #     restart: always
-
-    # jackett:
-    #     image: "linuxserver/jackett"
-    #     container_name: "jackett"
-    #     volumes:
-    #         - "./jackett:/config"
-    #         - "./downloads:/downloads"
-    #     environment:
-    #         - "TZ=America/Toronto"
-    #     ports:
-    #         - "9117:9117"
-    #     restart: always
-
     # nzbget:
     #     image: "linuxserver/nzbget"
     #     container_name: "nzbget"
@@ -118,6 +28,102 @@ services:
     #         - "6789:6789"
     #     restart: always
 
+    # Torrents
+    deluge:
+        image: "linuxserver/deluge"
+        container_name: "deluge"
+        volumes:
+            - "./deluge:/config"
+            - "./downloads:/downloads"
+        environment:
+            - "TZ=America/Toronto"
+        ports:
+            - "8112:8112"
+        restart: always
+
+    transmission:
+        image: "linuxserver/transmission"
+        container_name: "transmission"
+        volumes:
+            - "./transmission:/config"
+            - "./watch:/watch"
+            - "./downloads:/downloads"
+        environment:
+            - "TZ=America/Toronto"
+        ports:
+            - "9091:9091"
+            - "51413:51413"
+            - "51413:51413/udp"
+        restart: always
+
+    # Torrent Support
+    jackett:
+        image: "linuxserver/jackett"
+        container_name: "jackett"
+        volumes:
+            - "./jackett:/config"
+            - "./downloads:/downloads"
+        environment:
+            - "TZ=America/Toronto"
+        ports:
+            - "9117:9117"
+        restart: always
+
+    # Movies
+    # couchpotato:
+    #     image: "linuxserver/couchpotato"
+    #     container_name: "couchpotato"
+    #     volumes:
+    #         - "./couchpotato:/config"
+    #         - "./downloads:/downloads"
+    #         - "./downloads/movies:/movies"
+    #     environment:
+    #         - "TZ=America/Toronto"
+    #     ports:
+    #         - "5050:5050"
+    #     restart: always
+
+    radarr:
+        image: "linuxserver/radarr"
+        container_name: "radarr"
+        volumes:
+            - "./radarr:/config"
+            - "./downloads:/downloads"
+            - "./downloads/movies:/movies"
+        environment:
+            - "TZ=America/Toronto"
+        ports:
+            - "7878:7878"
+        restart: always
+
+    # TV
+    sonarr:
+        image: "linuxserver/sonarr"
+        container_name: "sonarr"
+        volumes:
+            - "./sonarr:/config"
+            - "./downloads:/downloads"
+            - "./downloads/tv:/tv"
+        environment:
+            - "TZ=America/Toronto"
+        ports:
+            - "8989:8989"
+        restart: always
+
+    # sickbeard:
+    #     image: "linuxserver/sickbeard"
+    #     container_name: "sickbeard"
+    #     volumes:
+    #         - "./sickbeard:/config"
+    #         - "./downloads:/downloads"
+    #         - "./downloads/tv:/tv"
+    #     environment:
+    #         - "TZ=America/Toronto"
+    #     ports:
+    #         - "8081:8081"
+    #     restart: always
+
+    # Media Players
     plex:
         image: "linuxserver/plex"
         container_name: "plex"
@@ -134,7 +140,6 @@ services:
             - "1900:1900"
         network_mode: host
         restart: always
-
 
     # kodi:
     #     image: "linuxserver/kodi-headless"

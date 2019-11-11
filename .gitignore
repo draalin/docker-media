@@ -1,0 +1,7 @@
+# Ignore
+
+*
+
+# Do not ignore
+!.gitignore
+docker-compose.yml
