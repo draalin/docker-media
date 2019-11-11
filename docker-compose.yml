@@ -41,20 +41,20 @@ services:
             - "8112:8112"
         restart: always
 
-    transmission:
-        image: "linuxserver/transmission"
-        container_name: "transmission"
-        volumes:
-            - "./transmission:/config"
-            - "./watch:/watch"
-            - "./downloads:/downloads"
-        environment:
-            - "TZ=America/Toronto"
-        ports:
-            - "9091:9091"
-            - "51413:51413"
-            - "51413:51413/udp"
-        restart: always
+    # transmission:
+    #     image: "linuxserver/transmission"
+    #     container_name: "transmission"
+    #     volumes:
+    #         - "./transmission:/config"
+    #         - "./watch:/watch"
+    #         - "./downloads:/downloads"
+    #     environment:
+    #         - "TZ=America/Toronto"
+    #     ports:
+    #         - "9091:9091"
+    #         - "51413:51413"
+    #         - "51413:51413/udp"
+    #     restart: always
 
     # Torrent Support
     jackett:
