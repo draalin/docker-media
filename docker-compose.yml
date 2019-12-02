@@ -138,7 +138,7 @@ services:
             - "32469:32469"
             - "5353:5353"
             - "1900:1900"
-        network_mode: host
+        network_mode: bridge # Has to be bridge on Windows. (Ports will not expose)
         restart: always
 
     # kodi:
